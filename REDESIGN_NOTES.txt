@@ -1,0 +1,8 @@
+JECRC SDC Website Redesign
+
+- JECRC logo moved to top-left using the supplied JECRC logo.
+- SDC logo moved to top-right.
+- Overall coral/purple theme changed to JECRC/SDC blue and navy.
+- Community cards now have a desktop 3D flip interaction.
+- Community cards use four alternating visual styles.
+- Mobile/touch layout keeps cards readable without requiring hover.

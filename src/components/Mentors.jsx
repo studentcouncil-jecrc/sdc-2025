@@ -54,7 +54,7 @@ export default function Mentors() {
               <div className="mentor-card-inner">
                 <div className="mentor-card-face mentor-card-front">
                   <div className="mentor-card-image">
-                    <img src={img(mentor.image)} alt={mentor.name} loading="lazy" />
+                    <img src={img(mentor.image)} alt={mentor.name} loading="lazy" decoding="async" />
                     <div className="mentor-card-shade" />
                     <div className="mentor-front-copy">
                       <h3>{mentor.name}</h3>

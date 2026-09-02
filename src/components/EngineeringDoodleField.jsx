@@ -14,6 +14,6 @@ export default function EngineeringDoodleField({ theme = "light" }) {
     ["robot", "field-d"], ["atom", "field-e"], ["ruler", "field-f"], ["cube", "field-g"]
   ];
   return <div className={`doodle-field doodle-field-${theme}`} aria-hidden="true">
-    {items.map(([name, cls], i) => <svg key={name} className={`field-motif ${cls}`} viewBox="0 0 170 110" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{motifs[name]}</svg>)}
+    {items.map(([name, cls]) => <svg key={name} className={`field-motif ${cls}`} viewBox="0 0 170 110" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{motifs[name]}</svg>)}
   </div>;
 }

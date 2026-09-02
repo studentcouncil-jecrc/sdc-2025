@@ -21,7 +21,7 @@ body { margin: 0; background: #06162d; color: #111; font-family: var(--font-body
   border-bottom:1px solid rgba(255,255,255,.1); transition:.3s ease;
 }
 .nav-scrolled .nav-shell {
-  height:64px; background:rgba(10,10,11,.82); backdrop-filter:blur(18px);
+  height:64px; background:rgba(10,10,11,.96);
   padding:0 18px; border:1px solid rgba(255,255,255,.09); border-radius:0 0 16px 16px;
 }
 .nav-link { position:relative; transition:color .25s ease; }
@@ -2022,14 +2022,12 @@ body,
   display: block;
   object-fit: cover;
   object-position: center;
-  opacity: .46;
-  filter:saturate(.72) sepia(.16) contrast(1.04) brightness(.78);
+  opacity: .38;
 }
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background:linear-gradient(135deg,rgba(55,55,43,.72),rgba(154,92,67,.18) 52%,rgba(41,37,30,.58));
-  mix-blend-mode:multiply;
+  background:linear-gradient(135deg,rgba(6,22,45,.72),rgba(23,105,194,.18) 52%,rgba(6,22,45,.58));
 }
 .hero-logo-sketch {
   position:absolute;
@@ -2756,3 +2754,75 @@ body,
 @keyframes doodleFloat { 0%,100% { margin-top:0; } 50% { margin-top:-9px; } }
 @media (max-width:900px) { .field-motif { width:125px; height:82px; opacity:.11; } .field-c,.field-g { display:none; } }
 @media (max-width:640px) { .field-motif { width:105px; height:68px; opacity:.08; } .field-a,.field-b,.field-d,.field-f { opacity:.07; } }
+
+/* =========================================================
+   SCROLL PERFORMANCE
+   ========================================================= */
+
+/* Let the browser skip layout and paint work for sections outside the viewport. */
+#about,
+#clubs,
+#events,
+#mentors,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Whole-section and card entrance effects avoid costly blur rasterization. */
+.scroll-reveal {
+  transform: none;
+  transition: opacity .35s ease;
+}
+.scroll-reveal.is-visible { transform: none; }
+
+.bento-club,
+.bento-club-0,
+.bento-club-1,
+.bento-club-2,
+.bento-club-3,
+.bento-club-4,
+.bento-club-5,
+.bento-club-6 {
+  filter: none;
+  transition: opacity .35s ease, transform .45s cubic-bezier(.16,1,.3,1);
+}
+.bento-club.from-left,
+.bento-club.from-right {
+  transform: translate3d(0, 20px, 0) scale(1);
+}
+.bento-club.is-visible { filter: none; }
+
+/* Decorative artwork stays visible without keeping dozens of animations running. */
+.engineering-doodle,
+.field-motif {
+  animation: none;
+}
+
+/* The hero only decodes video and advances its marquee while it is on screen. */
+.hero-section:not(.is-active) .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Replace the duplicated, continuously animated event rail with a native horizontal scroller. */
+.events-marquee {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  scrollbar-width: thin;
+  mask-image: none;
+}
+.events-marquee-track {
+  animation: none;
+  padding-inline: max(1rem, calc((100vw - 1400px) / 2));
+}
+.event-marquee-card { scroll-snap-align: start; }
+.event-marquee-image img { filter: none; }
+
+@media (max-width: 640px) {
+  .engineering-doodle-secondary,
+  .field-c,
+  .field-g {
+    display: none;
+  }
+}

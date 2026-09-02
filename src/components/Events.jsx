@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { img } from "../lib/images";
-import { FaArrowRight, FaArrowUpRightFromSquare, FaChevronLeft, FaChevronRight, FaXmark } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare, FaChevronLeft, FaChevronRight, FaXmark } from "react-icons/fa6";
 import EngineeringDoodle from "./EngineeringDoodle";
 import EngineeringDoodleField from "./EngineeringDoodleField";
 
@@ -32,8 +32,6 @@ export default function Events() {
   const [activeGallery, setActiveGallery] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const eventLoop = [...featured, ...featured];
-
   const openGallery = (galleryKey) => {
     const gallery = eventGalleries[galleryKey];
     if (!gallery) return;
@@ -59,9 +57,13 @@ export default function Events() {
     if (!activeGallery) return;
 
     const onKeyDown = (event) => {
-      if (event.key === "Escape") closeGallery();
-      if (event.key === "ArrowRight") nextImage();
-      if (event.key === "ArrowLeft") prevImage();
+      if (event.key === "Escape") setActiveGallery(null);
+      if (event.key === "ArrowRight") {
+        setActiveIndex((index) => (index + 1) % activeGallery.images.length);
+      }
+      if (event.key === "ArrowLeft") {
+        setActiveIndex((index) => (index - 1 + activeGallery.images.length) % activeGallery.images.length);
+      }
     };
 
     document.body.style.overflow = "hidden";
@@ -71,7 +73,7 @@ export default function Events() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [activeGallery, currentGallery]);
+  }, [activeGallery]);
 
   return (
     <>
@@ -103,11 +105,11 @@ export default function Events() {
 
           <div className="events-marquee" aria-label="Event archive">
             <div className="events-marquee-track">
-              {eventLoop.map((event, index) => (
-                <button type="button" key={`${event.file}-${index}`} className="event-marquee-card event-gallery-trigger" onClick={() => openGallery(event.gallery)} aria-label={`Open ${event.label} gallery`}>
+              {featured.map((event, index) => (
+                <button type="button" key={event.file} className="event-marquee-card event-gallery-trigger" onClick={() => openGallery(event.gallery)} aria-label={`Open ${event.label} gallery`}>
                   <div className="event-marquee-image">
-                    <img src={img(event.file)} alt={event.label} loading="lazy" />
-                    <span className="event-marquee-index">{String((index % featured.length) + 1).padStart(2, "0")}</span>
+                    <img src={img(event.file)} alt={event.label} loading="lazy" decoding="async" />
+                    <span className="event-marquee-index">{String(index + 1).padStart(2, "0")}</span>
                     <span className="event-marquee-open"><FaArrowUpRightFromSquare /></span>
                   </div>
                   <div className="event-marquee-meta">

@@ -98,7 +98,7 @@ export default function Clubs() {
                   <div className="bento-face bento-front">
                     <div className="bento-category">{getCategory(club.tag)}</div>
                     <div className={`bento-logo ${club.logoTone === "dark" ? "bento-logo-dark" : "bento-logo-light"}`}>
-                      <img src={img(club.icon)} alt={club.name} loading="lazy" />
+                      <img src={img(club.icon)} alt={club.name} loading="lazy" decoding="async" />
                     </div>
                     <div className="bento-content"><h3>{club.name}</h3></div>
                     <div className="bento-shine" aria-hidden="true" />

@@ -1,38 +1,62 @@
-import { hero } from "../data/content";
-import heroVideo from "../assets/Media1.mp4";
-import studentCouncilLogo from "../assets/logos/logoss-02.png";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function Hero() {
+  const sectionRef = useRef(null);
+  const videoRef = useRef(null);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(entry.isIntersecting);
+
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="home" className="hero-section">
+    <section ref={sectionRef} id="home" className={`hero-section ${isActive ? "is-active" : ""}`}>
       <div className="hero-video" aria-hidden="true">
         <video
+          ref={videoRef}
           className="hero-video-media"
-          src={heroVideo}
+          src="https://square-band-987d.studentcouncil-4ec.workers.dev/Media1.webm"
           autoPlay
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         />
         <div className="hero-video-overlay" />
       </div>
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-logo-sketch" aria-hidden="true">
-        <span className="hero-logo-sketch-label">SDC / FIELD NOTE 22</span>
-        <img src={studentCouncilLogo} alt="" />
+        <img src="https://square-band-987d.studentcouncil-4ec.workers.dev/logos/logoss-02.png" alt="" />
       </div>
 
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="min-h-[760px] lg:min-h-[900px] flex items-end pb-14 lg:pb-20 pt-32">
+        <div className="min-h-[760px]  flex items-end pb-14 lg:pb-20 pt-32">
           <div className="w-full grid lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-16 items-end">
             <div>
               <h1 className="hero-title hero-reveal hero-reveal-2">
                 <span>STUDENTS</span>
                 <span className="outline-text">WHO</span>
                 <span>MAKE IT</span>
-                <span className="accent-word">HAPPEN<span>.</span></span>
+                <span className="accent-word">HAPPEN</span>
               </h1>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-5 sm:items-center hero-reveal hero-reveal-3">

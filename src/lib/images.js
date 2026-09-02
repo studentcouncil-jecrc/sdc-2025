@@ -1,17 +1,7 @@
-// Vite can't resolve dynamic `import(variable)` paths, so we eagerly glob
-// everything under src/assets once and look files up by their relative path
-// (the same strings used in src/data/content.js, e.g. "clubs/adaa.png").
-const modules = import.meta.glob("../assets/**/*.{png,jpg,jpeg,webp,svg}", {
-  eager: true,
-  import: "default",
-});
-
-const map = {};
-for (const path in modules) {
-  const key = path.replace("../assets/", "");
-  map[key] = modules[path];
-}
+const CDN_URL = "https://square-band-987d.studentcouncil-4ec.workers.dev";
 
 export function img(relativePath) {
-  return map[relativePath] ?? "";
+  if (!relativePath) return "";
+
+  return `${CDN_URL}/${relativePath}`;
 }

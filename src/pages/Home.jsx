@@ -6,13 +6,11 @@ import Events from "../components/Events";
 import Mentors from "../components/Mentors";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
-import EngineeringDoodleField from "../components/EngineeringDoodleField";
 
 export default function Home() {
   return (
     <div>
       <Navbar />
-      <div className="home-doodle-field"><EngineeringDoodleField theme="dark" /></div>
       <Hero />
       <ScrollReveal className="reveal-section">
         <About />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav } from "../data/content";
 import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
 import { img } from "../lib/images";
@@ -6,9 +6,16 @@ import { img } from "../lib/images";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const scrolledRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 24;
+      if (nextScrolled === scrolledRef.current) return;
+
+      scrolledRef.current = nextScrolled;
+      setScrolled(nextScrolled);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

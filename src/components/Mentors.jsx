@@ -4,6 +4,7 @@ import { img } from "../lib/images";
 import { FaInstagram, FaLinkedinIn, FaRotate } from "react-icons/fa6";
 import EngineeringDoodle from "./EngineeringDoodle";
 import EngineeringDoodleField from "./EngineeringDoodleField";
+import mohakMam from '../assets/mohak-mam.png'
 
 export default function Mentors() {
   const [flipped, setFlipped] = useState(null);
@@ -54,7 +55,7 @@ export default function Mentors() {
               <div className="mentor-card-inner">
                 <div className="mentor-card-face mentor-card-front">
                   <div className="mentor-card-image">
-                    <img src={img(mentor.image)} alt={mentor.name} loading="lazy" decoding="async" />
+                    <img src={mentor.id == 5?mohakMam:img(mentor.image)} alt={mentor.name} loading="lazy" decoding="async" />
                     <div className="mentor-card-shade" />
                     <div className="mentor-front-copy">
                       <h3>{mentor.name}</h3>

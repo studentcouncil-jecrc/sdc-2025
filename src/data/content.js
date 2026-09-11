@@ -110,26 +110,30 @@ export const clubs = [
 
 export const mentors = [
   {
-    name: "Mr. Arpit Agarwal",
+    id:1,
+    name: "Mr. Arpit Agrawal",
     title: "Vice Chairperson, JECRC",
     image: "mentors-img/arpitsir.webp",
     linkedin: "https://www.linkedin.com/in/arpitjecrc/",
     instagram: "https://www.instagram.com/arpitjecrc?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
   },
   {
-    name: "Mr. Dheemant Agarwal",
+    id:2,
+    name: "Mr. Dheemant Agrawal",
     title: "Director - Digital Strategy",
     image: "mentors-img/dheemantsir.webp",
     linkedin: "https://www.linkedin.com/in/dheemantagrawal/",
     instagram: "https://www.instagram.com/dheemant.ag?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
   },
   {
-    name: "Dr. V.K Chandna",
+    id:3,
+    name: "Prof. (Dr.) V.K Chandna",
     title: "Principal, JECRC",
     image: "mentors-img/vkchandha.webp",
     linkedin: "https://www.linkedin.com/in/dr-vinay-kumar-chandna-711a44207/",
   },
   {
+    id:4,
     name: "Mr. Pranshu Sharma",
     title: "Head, Student Affairs, SDO, JECRC",
     image: "mentors-img/pranshusir.webp",
@@ -137,6 +141,7 @@ export const mentors = [
     instagram: "https://www.instagram.com/r.pranshu25?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
   },
   {
+    id:5,
     name: "Ms. Mohak Khanduja",
     title: "Head - Design and Creative Strategy, JECRC",
     image: "mentors-img/mohakmam.webp",

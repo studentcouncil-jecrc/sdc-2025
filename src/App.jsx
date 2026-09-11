@@ -43,7 +43,7 @@ function FloatingConnect() {
       rel="noreferrer"
       aria-label="Connect through the club recruitment form"
     >
-      <span>Join</span>
+      <span>Join Us</span>
       <FaArrowRight aria-hidden="true" />
     </a>
   );

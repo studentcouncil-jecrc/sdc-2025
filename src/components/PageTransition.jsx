@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { img } from "../lib/images";
 
@@ -6,9 +6,19 @@ export default function PageTransition({ children }) {
   const location = useLocation();
   const [introVisible, setIntroVisible] = useState(true);
 
+  useLayoutEffect(() => {
+    document.body.classList.add("intro-active");
+    return () => document.body.classList.remove("intro-active");
+  }, []);
+
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroVisible(false), 5000);
-    return () => window.clearTimeout(timer);
+    const hideTimer = window.setTimeout(() => document.body.classList.remove("intro-active"), 5000);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(hideTimer);
+      document.body.classList.remove("intro-active");
+    };
   }, []);
 
   return (

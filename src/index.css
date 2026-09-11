@@ -207,6 +207,11 @@ body { margin: 0; background: #06162d; color: #111; font-family: var(--font-body
   letter-spacing: .18em;
   transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
 }
+body.intro-active .floating-connect {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 .floating-connect:hover {
   transform: translateY(-4px);
   background: #fff;

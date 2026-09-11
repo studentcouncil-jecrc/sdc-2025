@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import Home from "./pages/Home";
 import ClubPage from "./pages/ClubPage";
 import PageTransition from "./components/PageTransition";
+import { FaArrowRight } from "react-icons/fa";
+
+const clubRecruitmentForm = "https://forms.gle/nf5UdCcHh1zawMRq6";
 
 function CursorDot() {
   useEffect(() => {
@@ -31,11 +34,27 @@ function AnimatedRoutes() {
   );
 }
 
+function FloatingConnect() {
+  return (
+    <a
+      className="floating-connect"
+      href={clubRecruitmentForm}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Connect through the club recruitment form"
+    >
+      <span>Join</span>
+      <FaArrowRight aria-hidden="true" />
+    </a>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <CursorDot />
       <AnimatedRoutes />
+      <FloatingConnect />
     </BrowserRouter>
   );
 }

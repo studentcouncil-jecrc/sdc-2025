@@ -171,6 +171,11 @@ body { margin: 0; background: #06162d; color: #111; font-family: var(--font-body
   .footer-title { font-size:clamp(3.7rem,18vw,6rem); }
   .footer-bottom { grid-template-columns:1fr auto; }
   .footer-bottom span:nth-child(2) { display:none; }
+  .floating-connect {
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    padding: 14px 16px;
+  }
 }
 
 /* ---------- Premium interaction polish ---------- */
@@ -183,6 +188,33 @@ body { margin: 0; background: #06162d; color: #111; font-family: var(--font-body
 .nav-cta svg { color: #1769c2; transition: transform .25s ease; }
 .nav-cta:hover svg { transform: translateX(3px); color: #fff; }
 .nav-cta:focus-visible { outline: 2px solid #1769c2; outline-offset: 4px; }
+
+.floating-connect {
+  position: fixed;
+  right: 24px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  color: #06162d;
+  background: #D4AF37;
+  border: 1px solid rgba(6,22,45,.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,.28);
+  font: 700 10px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
+}
+.floating-connect:hover {
+  transform: translateY(-4px);
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(0,0,0,.34);
+}
+.floating-connect:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.floating-connect svg { transition: transform .25s ease; }
+.floating-connect:hover svg { transform: translateX(3px); }
 
 /* Dark logo files become crisp on a warm paper tile instead of disappearing on black. */
 .club-logo {

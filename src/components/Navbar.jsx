@@ -3,6 +3,8 @@ import { nav } from "../data/content";
 import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
 import { img } from "../lib/images";
 
+const clubRecruitmentForm = "https://forms.gle/nf5UdCcHh1zawMRq6";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +44,13 @@ export default function Navbar() {
           </nav>
 
           <div className="nav-actions">
-            <a href="/#contact" className="hidden md:flex nav-cta">
+            <a
+              href={clubRecruitmentForm}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden md:flex nav-cta"
+              aria-label="Connect through the club recruitment form"
+            >
               <span>Connect</span><FaArrowRight />
             </a>
 

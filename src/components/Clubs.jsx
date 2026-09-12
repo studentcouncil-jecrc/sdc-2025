@@ -11,7 +11,7 @@ const filters = ["All", "Cultural Communities", "Technical Communities"];
 function getCategory(tag) {
   if (/robotics|automobile/i.test(tag)) return "Technical Communities";
   if (/cultural|bhangra/i.test(tag)) return "Cultural Communities";
-  return "Culture";
+  return "Cultural Communities";
 }
 
 export default function Clubs() {

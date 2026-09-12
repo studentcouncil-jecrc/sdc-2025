@@ -6,11 +6,11 @@ import { FaArrowRight, FaLayerGroup } from "react-icons/fa6";
 import EngineeringDoodle from "./EngineeringDoodle";
 import EngineeringDoodleField from "./EngineeringDoodleField";
 
-const filters = ["All", "Culture", "Tech"];
+const filters = ["All", "Cultural Communities", "Technical Communities"];
 
 function getCategory(tag) {
-  if (/robotics|automobile/i.test(tag)) return "Tech";
-  if (/cultural|bhangra/i.test(tag)) return "Culture";
+  if (/robotics|automobile/i.test(tag)) return "Technical Communities";
+  if (/cultural|bhangra/i.test(tag)) return "Cultural Communities";
   return "Culture";
 }
 

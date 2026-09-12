@@ -6,12 +6,12 @@ import { FaArrowRight, FaLayerGroup } from "react-icons/fa6";
 import EngineeringDoodle from "./EngineeringDoodle";
 import EngineeringDoodleField from "./EngineeringDoodleField";
 
-const filters = ["All", "Creative", "Culture", "Tech"];
+const filters = ["All", "Culture", "Tech"];
 
 function getCategory(tag) {
   if (/robotics|automobile/i.test(tag)) return "Tech";
   if (/cultural|bhangra/i.test(tag)) return "Culture";
-  return "Creative";
+  return "Culture";
 }
 
 export default function Clubs() {

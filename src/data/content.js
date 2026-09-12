@@ -45,10 +45,10 @@ export const clubs = [
   },
   {
     slug: "avyaan",
-    name: "Karvaan",
+    name: "Avyaan",
     tag: "Music Club",
     description:
-      "Where voices blend in harmony. Karvaan is the official music club of JECRC.",
+      "Where voices blend in harmony. Avyaan is the official music club of JECRC.",
     icon: "clubs/avyaan.png",
     logoTone: "light",
   },
